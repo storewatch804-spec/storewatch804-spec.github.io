@@ -1,0 +1,265 @@
+<title>Competitor Store Alerts for Shopify Sellers</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Stop checking competitor Shopify stores by hand. We watch up to 5 stores and email you only when a price changes, a product launches, or one goes out of stock.">
+<style>
+  :root {
+    --ink: #16181d;
+    --ink-soft: #4a4f59;
+    --bg: #ffffff;
+    --bg-soft: #f6f7f9;
+    --line: #e4e6ea;
+    --accent: #1a5c3a;
+    --accent-soft: #e7f2ec;
+    --max: 640px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  header.hero {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    font-weight: 700;
+  }
+  .sub {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .cta-primary {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .cta-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 8px;
+  }
+  section { padding: 36px 0; border-bottom: 1px solid var(--line); }
+  h2 {
+    font-size: 21px;
+    margin: 0 0 18px;
+  }
+  .alert-list {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .alert-item {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .alert-item strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .alert-item span {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .accuracy-box {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .accuracy-box p:first-child {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--accent);
+  }
+  .accuracy-box p {
+    margin: 0 0 10px;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .accuracy-box p:last-child { margin-bottom: 0; }
+  .price-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    text-align: center;
+  }
+  .price-amount {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .price-amount span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .price-list {
+    text-align: left;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .price-list li {
+    padding: 6px 0;
+    border-top: 1px solid var(--line);
+  }
+  .price-list li:first-child { border-top: none; }
+  form {
+    margin-top: 4px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .cta-secondary {
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--bg-soft);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .divider-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 22px 0;
+  }
+  footer {
+    padding: 28px 0 48px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  @media (min-width: 700px) {
+    h1 { font-size: 38px; }
+    .sub { font-size: 18px; }
+    .alert-list { grid-template-columns: 1fr 1fr 1fr; }
+    .cta-primary, .cta-secondary { width: auto; }
+  }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">For small Shopify sellers</p>
+    <h1>Stop checking your competitors' stores by hand every week.</h1>
+    <p class="sub">Give us up to 5 competitor Shopify stores. We check them every day and email you only when something actually changes — a price, a new product, or something going out of stock.</p>
+    <a href="#signup" class="cta-primary">Join the $9/mo pilot</a>
+    <p class="cta-note">No spam digests. If nothing changed, you hear nothing.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Three things we watch for</h2>
+    <ul class="alert-list">
+      <li class="alert-item">
+        <strong>Price change</strong>
+        <span>A competitor raises or lowers the price on a product you're watching.</span>
+      </li>
+      <li class="alert-item">
+        <strong>New product</strong>
+        <span>A competitor lists something that wasn't in their catalog before.</span>
+      </li>
+      <li class="alert-item">
+        <strong>Gone / out of stock</strong>
+        <span>A competitor's product disappears or shows sold out.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="accuracy-box">
+      <p>Structured data only — if we can't be sure, we don't alert.</p>
+      <p>We read each store's public <code>/products.json</code> feed — the same structured product data Shopify itself publishes. We never scrape or guess from a rendered page.</p>
+      <p>If a change isn't a clean, verifiable diff, we stay quiet. A wrong alert is worse than no alert.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Pricing</h2>
+    <div class="price-card">
+      <p class="price-amount">$9<span>/month, pilot pricing</span></p>
+      <ul class="price-list">
+        <li>Up to 5 competitor stores watched</li>
+        <li>Checked once daily</li>
+        <li>One email digest, only on real changes</li>
+        <li>Price, new product, and out-of-stock alerts</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="signup" style="border-bottom: none;">
+  <div class="wrap">
+    <h2>Join the pilot</h2>
+    <!-- CHECKOUT_URL: single source of truth for the real checkout target. Dodo TEST-MODE
+         $9 tier link today (pdt_0NlKOHy7Ga96pwK7yFQvg) — swaps to the live.checkout URL when
+         KYC clears. One line to rewire, nothing else references it. -->
+    <a href="https://test.checkout.dodopayments.com/buy/pdt_0NlKOHy7Ga96pwK7yFQvg" class="cta-primary">Join the $9/mo pilot</a>
+    <p class="divider-text">Not ready to pay yet?</p>
+    <!-- EMAIL_FALLBACK: form has no backend yet; wire to a real inbox or list once one exists -->
+    <form>
+      <label for="email">Leave your email and we'll reach out when it's ready</label>
+      <input type="email" id="email" name="email" placeholder="you@yourstore.com" required>
+      <button type="submit" class="cta-secondary">Notify me</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built by one person, not a company. Watches public store data only — nothing installed on your store or theirs.</p>
+  </div>
+</footer>
