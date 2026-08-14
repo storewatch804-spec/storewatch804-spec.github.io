@@ -10,7 +10,11 @@
     --bg-soft: #f6f7f9;
     --line: #e4e6ea;
     --accent: #1a5c3a;
+    --accent-hover: #144a2f;
     --accent-soft: #e7f2ec;
+    --shadow-sm: 0 1px 3px rgba(22, 24, 29, 0.06), 0 1px 2px rgba(22, 24, 29, 0.04);
+    --shadow-md: 0 8px 24px rgba(22, 24, 29, 0.08), 0 2px 6px rgba(22, 24, 29, 0.05);
+    --shadow-focus: 0 0 0 3px rgba(26, 92, 58, 0.28);
     --max: 640px;
   }
   * { box-sizing: border-box; }
@@ -20,16 +24,46 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
     background: var(--bg);
-    line-height: 1.5;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
   .wrap {
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 20px;
   }
+  a { color: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    stroke: var(--accent);
+  }
   header.hero {
-    padding: 48px 0 36px;
+    padding: 52px 0 40px;
     border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--accent-soft) 0%, var(--bg) 65%);
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 18px;
+  }
+  .brand-mark .icon {
+    stroke: #fff;
+    width: 22px;
+    height: 22px;
   }
   .eyebrow {
     font-size: 13px;
@@ -40,38 +74,54 @@
     margin: 0 0 12px;
   }
   h1 {
-    font-size: 30px;
+    font-size: 31px;
     line-height: 1.2;
     margin: 0 0 14px;
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
   .sub {
     font-size: 17px;
     color: var(--ink-soft);
-    margin: 0 0 24px;
+    margin: 0 0 26px;
+    max-width: 54ch;
   }
   .cta-primary {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
+    min-height: 50px;
     text-align: center;
     padding: 14px 20px;
     background: var(--accent);
     color: #fff;
     text-decoration: none;
-    border-radius: 8px;
+    border: none;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 16px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
+  .cta-primary:hover, .cta-primary:focus-visible {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-md);
+  }
+  .cta-primary:active { transform: translateY(1px); }
   .cta-note {
     font-size: 13px;
     color: var(--ink-soft);
     text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
   }
-  section { padding: 36px 0; border-bottom: 1px solid var(--line); }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
   h2 {
     font-size: 21px;
-    margin: 0 0 18px;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
   }
   .alert-list {
     display: grid;
@@ -81,9 +131,22 @@
     list-style: none;
   }
   .alert-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .alert-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .alert-item .icon {
+    margin-top: 2px;
   }
   .alert-item strong {
     display: block;
@@ -95,9 +158,15 @@
     color: var(--ink-soft);
   }
   .accuracy-box {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
     background: var(--accent-soft);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .accuracy-box .icon {
+    margin-top: 2px;
   }
   .accuracy-box p:first-child {
     font-weight: 600;
@@ -112,15 +181,19 @@
   }
   .accuracy-box p:last-child { margin-bottom: 0; }
   .price-card {
+    position: relative;
     border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 22px;
+    border-radius: 14px;
+    padding: 26px 22px;
     text-align: center;
+    box-shadow: var(--shadow-md);
+    border-top: 3px solid var(--accent);
   }
   .price-amount {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 700;
     margin: 0;
+    letter-spacing: -0.02em;
   }
   .price-amount span {
     font-size: 15px;
@@ -129,17 +202,25 @@
   }
   .price-list {
     text-align: left;
-    margin: 18px 0 0;
+    margin: 20px 0 0;
     padding: 0;
     list-style: none;
     font-size: 14px;
     color: var(--ink-soft);
   }
   .price-list li {
-    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
     border-top: 1px solid var(--line);
   }
   .price-list li:first-child { border-top: none; }
+  .price-list .icon {
+    width: 16px;
+    height: 16px;
+    stroke: var(--accent);
+  }
   form {
     margin-top: 4px;
   }
@@ -151,14 +232,21 @@
   }
   input[type="email"] {
     width: 100%;
+    min-height: 46px;
     padding: 12px 14px;
     border: 1px solid var(--line);
     border-radius: 8px;
     font-size: 16px;
     margin-bottom: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="email"]:focus-visible {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-focus);
   }
   .cta-secondary {
     width: 100%;
+    min-height: 48px;
     padding: 12px 20px;
     background: var(--bg-soft);
     color: var(--ink);
@@ -166,28 +254,41 @@
     border-radius: 8px;
     font-weight: 600;
     font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .cta-secondary:hover, .cta-secondary:focus-visible {
+    background: var(--bg);
+    border-color: var(--accent);
   }
   .divider-text {
     text-align: center;
     font-size: 13px;
     color: var(--ink-soft);
-    margin: 22px 0;
+    margin: 24px 0;
   }
   footer {
-    padding: 28px 0 48px;
+    padding: 30px 0 48px;
     font-size: 13px;
     color: var(--ink-soft);
   }
   @media (min-width: 700px) {
-    h1 { font-size: 38px; }
+    h1 { font-size: 40px; }
     .sub { font-size: 18px; }
     .alert-list { grid-template-columns: 1fr 1fr 1fr; }
     .cta-primary, .cta-secondary { width: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .alert-item:hover { transform: none; }
   }
 </style>
 
 <header class="hero">
   <div class="wrap">
+    <span class="brand-mark" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+    </span>
     <p class="eyebrow">For small Shopify sellers</p>
     <h1>Stop checking your competitors' stores by hand every week.</h1>
     <p class="sub">Give us up to 5 competitor Shopify stores. We check them every day and email you only when something actually changes — a price, a new product, or something going out of stock.</p>
@@ -201,16 +302,25 @@
     <h2>Three things we watch for</h2>
     <ul class="alert-list">
       <li class="alert-item">
-        <strong>Price change</strong>
-        <span>A competitor raises or lowers the price on a product you're watching.</span>
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41L11 3.83A2 2 0 0 0 9.59 3.17H4a1 1 0 0 0-1 1v5.59a2 2 0 0 0 .59 1.41l9.58 9.58a2 2 0 0 0 2.83 0l4.59-4.59a2 2 0 0 0 0-2.83z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+        <span>
+          <strong>Price change</strong>
+          <span>A competitor raises or lowers the price on a product you're watching.</span>
+        </span>
       </li>
       <li class="alert-item">
-        <strong>New product</strong>
-        <span>A competitor lists something that wasn't in their catalog before.</span>
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+        <span>
+          <strong>New product</strong>
+          <span>A competitor lists something that wasn't in their catalog before.</span>
+        </span>
       </li>
       <li class="alert-item">
-        <strong>Gone / out of stock</strong>
-        <span>A competitor's product disappears or shows sold out.</span>
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <span>
+          <strong>Gone / out of stock</strong>
+          <span>A competitor's product disappears or shows sold out.</span>
+        </span>
       </li>
     </ul>
   </div>
@@ -219,9 +329,12 @@
 <section>
   <div class="wrap">
     <div class="accuracy-box">
-      <p>Accurate by design — if we're not sure, we stay quiet.</p>
-      <p>StoreWatch keeps eyes on your competitors around the clock and only surfaces the changes that matter. No noise, no "nothing happened" emails, no guesswork.</p>
-      <p>A wrong alert is worse than no alert. So when something lands in your inbox, it's real — and it's worth knowing.</p>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div>
+        <p>Accurate by design — if we're not sure, we stay quiet.</p>
+        <p>StoreWatch keeps eyes on your competitors around the clock and only surfaces the changes that matter. No noise, no "nothing happened" emails, no guesswork.</p>
+        <p>A wrong alert is worse than no alert. So when something lands in your inbox, it's real — and it's worth knowing.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -232,10 +345,10 @@
     <div class="price-card">
       <p class="price-amount">$9<span>/month, pilot pricing</span></p>
       <ul class="price-list">
-        <li>Up to 5 competitor stores watched</li>
-        <li>Checked once daily</li>
-        <li>One email digest, only on real changes</li>
-        <li>Price, new product, and out-of-stock alerts</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Up to 5 competitor stores watched</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Checked once daily</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>One email digest, only on real changes</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Price, new product, and out-of-stock alerts</li>
       </ul>
     </div>
   </div>
